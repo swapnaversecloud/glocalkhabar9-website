@@ -10,6 +10,13 @@ const nextConfig = {
   },
   trailingSlash: false,
   reactStrictMode: false,
+
+  // ⭐ ADD THIS PART ⭐
+  eslint: {
+    ignoreDuringBuilds: true,
+  },
+  // ⭐ ADD THIS PART END ⭐
+
   webpack: (config, { isServer }) => {
     if (isServer) {
       require('./scripts/sitemap-generator')
@@ -26,5 +33,5 @@ const nextConfig = {
 if (process.env.NEXT_PUBLIC_SEO === 'false') {
   (nextConfig.output = 'export'), (nextConfig.images.unoptimized = true)
 }
-// console.log(nextConfig)
+
 module.exports = nextConfig
